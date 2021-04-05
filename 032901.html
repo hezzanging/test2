@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Document</title>
+	<style>
+		body{
+			margin: 20px;
+			padding: 20px;
+			line-height: 1.5;
+			font-family: Arial;
+			font-size: 1em;
+			background-color: #555; 
+		}
+
+		#ball{
+			position: absolute;
+			left: 0;
+			border-radius: 50%;
+			margin-left: 100px;
+			width: 50px;
+			height: 50px;
+			transition: 0.5s;	
+			background-color: orange;	
+		}
+
+		#ball.ball0{
+			background-color: orange;
+		}
+
+		#ball.ball1{
+			background-color: #8ac007;
+		}
+
+		#ball.ball2{
+			background-color: pink;
+		}
+        
+		#ball.ball3{
+			background-color: purple;
+		}
+
+
+	</style>
+	<script>
+		$(function(){
+           var n = 0;
+
+           $("#ball").click(function(){
+             if( n < 3){
+             	n= n+1;
+             } else{
+             	n=0;
+             }
+             $(this).css({left:100*n});
+           });
+           $("#ball").on("transitionend", function(){
+             $(this).removeAttr("class").addClass("ball"+n);
+           });
+		});
+	</script>
+</head>
+<body>
+	<div class="containe">
+		<div id="ball"></div>
+	</div>
+</body>
+</html>
